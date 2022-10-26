@@ -1,0 +1,31 @@
+#!/bin/bash
+
+PROG=$( basename $0 )
+FUNC=$1
+
+CLMGR_DIR=$( dirname $0 )
+
+function show_help {
+cat <<EOHELP
+
+    Cluster Manager Utility
+
+    Usage: ${PROG}
+
+
+EOHELP
+
+   exit 1
+}
+
+
+if [ "x${FUNC}" == "x" ] ; then
+   show_help
+fi
+
+case ${FUNC} in
+   config)   shift ; ${CLMGR_DIR}/functions/config "$*" ;;
+        *)   exit 0 ;;
+esac
+
+
